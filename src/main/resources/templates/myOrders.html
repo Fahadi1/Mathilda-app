@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout}">
+<head>
+<title>Mes Commandes</title>
+<link rel="stylesheet" href="/css/myOrders.css">
+<script type='text/javascript'
+	src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script type='text/javascript'
+	src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="row">
+			<h3 class="no-article" th:if="${commands.size == 0}">Aucune commande trouv&eacute;e</h3>
+			<div class="accordion" id="accordionExample">
+				<div class="card" th:each="command : ${commands}">	
+					<div class="card-header" th:id="'heading' + ${command.id}">
+						<h2 class="mb-0">
+							<button class="btn btn-link" type="button" data-toggle="collapse" 
+							th:attr="data-target='#collapse' + ${command.id}" aria-expanded="true"
+								aria-controls="TooooOTO" id="boutonHeader">
+								<b>Commande du : </b>
+								<span th:text="${#temporals.format(command.creationDate, 'dd-MMMM-yyyy', new java.util.Locale('fr', 'FR'))}"></span>
+							</button>
+						</h2>
+					</div>
+					<div th:id="'collapse' + ${command.id}" class="collapse hide" th:attr="aria-labelledby='heading' + ${command.id}" data-parent="#accordionExample">
+						<div class="card-body">
+							<div id="dateCommande" style="_text-align: center">
+								
+								<div class="paraphContent">
+									<b>Montant de la commande :</b> <span class="price"
+										th:text="${command.taxInPrice} + ' €'"> </span>
+								</div>
+								<div class="paraphContent">
+									<span class="orderStatus"
+										th:if="${command.creationDate != null and command.shippingDate ==null}"> <b class="cmdEnPrep">Commande en cours de pr&eacute;paration</b>
+									</span> <span class="orderStatus"
+										th:if="${command.deliveryDate == null and command.shippingDate !=null}">
+										<b class="cmdEnLivraison">Commande en cours de livraison</b>
+									</span> <span class="orderStatus"
+										th:if="${command.deliveryDate != null and command.ReturnDate ==null}"> <b
+										class="cmdLivree">Commande livr&eacute;e</b>
+									</span> <span class="orderStatus"
+										th:if="${command.ReturnDate != null and command.deliveryReturnDate == null}"> <b
+										class="cmdCoursDeRetour">Commande en cours de retour</b>
+									</span> <span class="orderStatus"
+										th:if="${command.deliveryReturnDate}"> <b
+										class="cmdRetournee">Commande retourn&eacute;e</b>
+									</span>
+								</div>
+							</div>
+							<div id="reference">
+								<table id="tableRef">
+									<tr class="tdRef">
+										<th class="spanName">Photo</th>
+										<th class="spanName">Nom</th>
+										<th class="spanName">Couleur du motif</th>
+										<th class="spanName">Quantit&eacute;</th>
+										<th class="spanName">Prix Unitaire</th>
+									</tr>
+									
+									<tr th:each="commandLine : ${command.commandLines}">
+										<td class="tdPhoto">
+											
+											  <img class="pic-1" th:src="@{'/photos/product/' + ${commandLine.product.photos[1].path}}" width="50" height="50">
+												
+										</td>
+										<td class="tdName">
+											  <span class="spanName" th:text="${commandLine.product.name}">
+												</span>
+										</td>
+										<td class="tdColor">
+											  <span class="spanColor" th:text="${commandLine.color.label}">
+												</span>
+										</td>
+										<td class="tdQuantity">
+											  <span class="spanQuantity" th:text="${commandLine.productQuantity}">
+												</span>
+										</td>
+										<td class="tdPrice">
+											  <span class="sapnPrice" th:text="${commandLine.product.price}">
+												</span>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

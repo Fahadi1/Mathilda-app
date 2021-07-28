@@ -1,0 +1,130 @@
+@import
+	url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap')
+	;
+
+body {
+	font-family: 'Manrope', sans-serif;
+}
+
+#center {
+	background-color: rgba(255, 255, 255, 0.9);
+}
+
+#parentParentCart {
+	display: flex;
+	flex-direction: column;
+}
+
+#enfant1Cart {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#enfant11Cart {
+	display: flex;
+	align-items: center;
+	margin-bottom: 2vh;
+	margin-top: 2vh
+}
+
+#article {
+	border-top: 1px solid grey;
+	border-bottom: 1px solid grey;
+	margin-bottom: 2vh;
+}
+
+#article-info {
+	justify-content: space-between;
+}
+
+#custom {
+	justify-content: space-between;
+	margin-left: 40px;
+}
+
+.size span {
+	font-size: 11px
+}
+
+.color span {
+	font-size: 11px
+}
+
+.product-deta {
+	margin-right: 70px
+}
+
+.pay-button {
+	_width: 100px;
+	font-weight: bold;
+	background: #FFE4DB;
+	color: rgb(64, 0, 0);
+	border: 0 none;
+	border-radius: 0px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+	font-family: "Gill Sans", sans-serif;
+}
+
+.pay-button:hover, .pay-button:focus {
+	_box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue;
+	transition: all 0.3s ease 0s;
+	background: #E28787;
+	color: white;
+	letter-spacing: 2px;
+}
+
+.text-grey {
+	color: #a39f9f
+}
+
+.qty i {
+	font-size: 11px
+}
+
+/* liens en bas */
+#totalBoutonsCart {
+	display: flex;
+	flex-direction: column;
+}
+
+#totalPanier {
+	align-self: flex-end;
+	display: flex;
+	justify-content: flex-end;
+}
+
+#totalPanier>label {
+	padding: 1vh 1vw;
+	margin: 1vh 2vw;
+	font-size: large;
+	font-weight: bold;
+}
+
+#cart-end {
+	justify-content: space-between;
+}
+
+#lienPanier, #lienAchat {
+	text-decoration: none;
+	padding: 1vh 1vw;
+	margin: 1vh 2vw;
+	align-self: flex-start;
+	font-weight: bold;
+	background: #FFE4DB;
+	color: black;
+	border: 0 none;
+	border-radius: 0px;
+	cursor: pointer;
+	font-family: "Gill Sans", sans-serif;
+}
+
+#lienPanier:hover, #lienAchat:hover {
+	text-decoration: none;
+	transition: all 0.3s ease 0s;
+	background: #E28787;
+	color: white;
+	letter-spacing: 1px;
+}
