@@ -14,6 +14,7 @@ import org.springframework.context.event.EventListener;
 
 
 @SpringBootApplication
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class MathildaApplication {
 	
 	static Logger log = LoggerFactory.getLogger(MathildaApplication.class);
