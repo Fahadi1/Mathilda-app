@@ -18,8 +18,8 @@ import fr.eql.al35.iservice.ColisService;
 public class ColisServiceDelegate implements ColisService {
 
 	private RestTemplate restTemplate;
-	private String baseUrlWsTransport = "http://localhost:8088/transport-rest";
-	private String  baseUrlWsPoids = "http://localhost:8087/api-colis/weight/";
+	private String baseUrlWsTransport = "http://15.188.87.229:8088/transport-rest";
+	private String  baseUrlWsPoids = "http://15.188.87.229:8087/api-colis/weight/";
 	private URI url = URI.create(baseUrlWsPoids);
 
 

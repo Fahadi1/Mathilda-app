@@ -72,7 +72,7 @@ public class PaymentController {
 		Tarif tarif = colisServiceDelegate.getTarif(idTarif);
 		sessionCart.setSendingPrice(tarif.getPrice());
 		sessionCart.setTransporteur(tarif.getTransporteur().getName());
-		String urlPtRelaisAngular ="http://localhost:4200/";
+		String urlPtRelaisAngular ="http://localhost:4200/"; 
 		return "redirect:" + urlPtRelaisAngular; //ok ? 
 	}
 

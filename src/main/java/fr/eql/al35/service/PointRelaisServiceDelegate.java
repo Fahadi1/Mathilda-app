@@ -15,7 +15,7 @@ import fr.eql.al35.iservice.PointRelaisService;
 public class PointRelaisServiceDelegate implements PointRelaisService {
 
 	private RestTemplate restTemplate;
-	private String baseUrlWSPointRelais = "http://localhost:3000/pointsRelais";
+	private String baseUrlWSPointRelais = "http://15.188.87.229:3000/pointsRelais";
 
 	public PointRelaisServiceDelegate() {
 		restTemplate = initRestTemplate();
