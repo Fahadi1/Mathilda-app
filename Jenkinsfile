@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                  sh 'echo "---=--- Checkout ---=---"'
+                  git branch: 'master', url:'https://github.com/Fahadi1/Mathilda-app.git'
 					sh 'mvn clean'
                 script {
                 try {
