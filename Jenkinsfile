@@ -49,7 +49,7 @@ pipeline {
         steps {
             script {
                 sshPublisher(publishers: [
-                    sshPublisherDesc(configName: 'ec2-host', transfers:[
+                    sshPublisherDesc(configName: 'math-host', transfers:[
                         sshTransfer(
                           execCommand: '''
                                 echo "-=- Cleaning project -=-"
