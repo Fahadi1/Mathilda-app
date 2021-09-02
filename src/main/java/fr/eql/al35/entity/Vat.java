@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +29,7 @@ public class Vat implements Serializable {
 	private Integer id;
 	private Double rate;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "vat")
 	private Set<Command> commands;
 

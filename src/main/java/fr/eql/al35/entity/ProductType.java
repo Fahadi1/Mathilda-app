@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +26,7 @@ public class ProductType implements Serializable {
 	@Id
 	private String name;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "productType",  cascade=CascadeType.ALL)
 	private Set<Product> products;
 

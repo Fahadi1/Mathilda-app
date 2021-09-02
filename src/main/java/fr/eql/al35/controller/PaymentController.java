@@ -25,6 +25,7 @@ import fr.eql.al35.entity.User;
 import fr.eql.al35.iservice.AccountIService;
 import fr.eql.al35.iservice.ColisService;
 import fr.eql.al35.iservice.CommandIService;
+import fr.eql.al35.iservice.KafkaIService;
 import fr.eql.al35.iservice.PointRelaisService;
 
 
@@ -44,6 +45,9 @@ public class PaymentController {
 
 	@Autowired
 	PointRelaisService pointRelaisServiceDelegate;
+	
+	@Autowired
+	KafkaIService kafkaServiceDelegate;
 
 
 	@GetMapping("/choixTransporteur")
@@ -72,7 +76,7 @@ public class PaymentController {
 		Tarif tarif = colisServiceDelegate.getTarif(idTarif);
 		sessionCart.setSendingPrice(tarif.getPrice());
 		sessionCart.setTransporteur(tarif.getTransporteur().getName());
-		String urlPtRelaisAngular ="http://mathildangular.s3-website.eu-west-3.amazonaws.com/"; 
+		String urlPtRelaisAngular ="http://localhost:4200"; 
 		return "redirect:" + urlPtRelaisAngular; //ok ? 
 	}
 
@@ -100,8 +104,13 @@ public class PaymentController {
 			System.out.println("paymentController, adresse non remplie");
 		}
 		command = cmdService.createCommand(command, sessionCart, sessionUser); 
+		
+		//appel kafka : 
+		kafkaServiceDelegate.sendNewCommandToKafka(command);
+		
 		cmdService.saveUser(sessionUser); 
 		model.addAttribute("sessionCart", new Cart());
+		
 
 		try {
 			Thread.sleep(3000);

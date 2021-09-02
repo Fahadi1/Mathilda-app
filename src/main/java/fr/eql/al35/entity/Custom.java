@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,6 +41,7 @@ public class Custom implements Serializable {
 	@JoinColumn(name="location_id")
 	private Location location;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "product",  cascade=CascadeType.ALL)
 	private Set<CustomsProducts> customsProducts;
 	
